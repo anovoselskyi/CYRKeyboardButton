@@ -158,6 +158,9 @@
         }
         [self.button.keyColor setFill];
         [bezierPath fill];
+        [self.button.borderColor setStroke];
+        bezierPath.lineWidth = self.button.borderWidth;
+        [bezierPath stroke];
         CGContextRestoreGState(context);
     }
     
@@ -214,7 +217,7 @@
     // Overlay path & shadow
     {
         CGFloat shadowAlpha = 0;
-        CGSize shadowOffset;
+        CGSize shadowOffset = CGSizeZero;
         
         switch ([UIDevice currentDevice].userInterfaceIdiom) {
             case UIUserInterfaceIdiomPhone:
@@ -242,6 +245,9 @@
         }
         [self.button.keyColor setFill];
         [bezierPath fill];
+        [self.button.borderColor setStroke];
+        bezierPath.lineWidth = self.button.borderWidth;
+        [bezierPath stroke];
         CGContextRestoreGState(context);
     }
     
@@ -345,6 +351,7 @@
             [path leftArc:majorRadius turn:48];
             [path forward:8.5f];
             [path rightArc:majorRadius turn:48];
+            [path closePath];
             
             CGFloat offsetX = 0, offsetY = 0;
             CGRect pathBoundingBox = path.bounds;
@@ -369,7 +376,7 @@
             [path rightArc:minorRadius turn:90]; // 9
             [path forward:path.currentPoint.x - minorRadius]; // 10
             [path rightArc:minorRadius turn:90]; // 11
-
+            [path closePath];
             
             CGFloat offsetX = 0, offsetY = 0;
             CGRect pathBoundingBox = path.bounds;
@@ -394,6 +401,7 @@
             [path rightArc:minorRadius turn:90]; // 9
             [path forward:path.currentPoint.x - minorRadius]; // 10
             [path rightArc:minorRadius turn:90]; // 11
+            [path closePath];
             
             CGFloat offsetX = 0, offsetY = 0;
             CGRect pathBoundingBox = path.bounds;
@@ -451,6 +459,7 @@
                     [path leftArc:majorRadius turn:48];
                     [path forward:8.5f];
                     [path rightArc:majorRadius turn:48];
+                    [path closePath];
                     
                     offsetX = CGRectGetMaxX(keyRect) - CGRectGetWidth(keyRect) - insets.left;
                     offsetY = CGRectGetMaxY(keyRect) - CGRectGetHeight(path.bounds) + 10;
@@ -505,6 +514,7 @@
                     [path leftArc:majorRadius turn:90]; // #5
                     [path forward:path.currentPoint.x - majorRadius];
                     [path rightArc:majorRadius turn:90]; // #6
+                    [path closePath];
                     
                     offsetX = CGRectGetMaxX(keyRect) - CGRectGetWidth(path.bounds) + insets.left;
                     offsetY = CGRectGetMaxY(keyRect) - CGRectGetHeight(path.bounds) + 10;

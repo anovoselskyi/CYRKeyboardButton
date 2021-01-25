@@ -102,6 +102,8 @@ NSString *const CYRKeyboardButtonKeyPressedKey = @"CYRKeyboardButtonKeyPressedKe
     _keyShadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3];
     _keyHighlightedColor = [UIColor colorWithRed:213/255.f green:214/255.f blue:216/255.f alpha:1];
     _showShadow = YES;
+    _borderWidth = 0;
+    _borderColor = [UIColor clearColor];
     
     // Styling
     self.backgroundColor = [UIColor clearColor];
