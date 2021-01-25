@@ -153,7 +153,9 @@
         
         //// Rounded Rectangle Drawing
         CGContextSaveGState(context);
-        CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+        if (self.button.showShadow) {
+            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+        }
         [self.button.keyColor setFill];
         [bezierPath fill];
         CGContextRestoreGState(context);
@@ -173,7 +175,9 @@
         UIBezierPath *roundedRectanglePath =
         [UIBezierPath bezierPathWithRoundedRect:CGRectMake(keyRect.origin.x, keyRect.origin.y, keyRect.size.width, keyRect.size.height - 1) cornerRadius:4];
         CGContextSaveGState(context);
-        CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+        if (self.button.showShadow) {
+            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+        }
         [color setFill];
         [roundedRectanglePath fill];
         
@@ -233,7 +237,9 @@
         
         //// Rounded Rectangle Drawing
         CGContextSaveGState(context);
-        CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+        if (self.button.showShadow) {
+            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+        }
         [self.button.keyColor setFill];
         [bezierPath fill];
         CGContextRestoreGState(context);
@@ -252,7 +258,9 @@
         UIBezierPath *roundedRectanglePath =
         [UIBezierPath bezierPathWithRoundedRect:CGRectMake(keyRect.origin.x, keyRect.origin.y, keyRect.size.width, keyRect.size.height - 1) cornerRadius:4];
         CGContextSaveGState(context);
-        CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+        if (self.button.showShadow) {
+            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+        }
         [color setFill];
         [roundedRectanglePath fill];
         
