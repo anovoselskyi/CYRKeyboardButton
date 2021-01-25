@@ -139,8 +139,6 @@
     UIBezierPath *bezierPath = [self inputViewPath];
     NSString *inputString = self.button.input;
     
-    // Position the overlay
-    CGRect keyRect = [self convertRect:self.button.frame fromView:self.button.superview];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -163,30 +161,7 @@
         [bezierPath stroke];
         CGContextRestoreGState(context);
     }
-    
-    // Draw the key shadow sliver
-    {
-        //// Color Declarations
-        UIColor *color = self.button.keyColor;
         
-        //// Shadow Declarations
-        UIColor *shadow = self.button.keyShadowColor;
-        CGSize shadowOffset = CGSizeMake(0.1, 1.1);
-        CGFloat shadowBlurRadius = 0;
-        
-        //// Rounded Rectangle Drawing
-        UIBezierPath *roundedRectanglePath =
-        [UIBezierPath bezierPathWithRoundedRect:CGRectMake(keyRect.origin.x, keyRect.origin.y, keyRect.size.width, keyRect.size.height - 1) cornerRadius:4];
-        CGContextSaveGState(context);
-        if (self.button.showShadow) {
-            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
-        }
-        [color setFill];
-        [roundedRectanglePath fill];
-        
-        CGContextRestoreGState(context);
-    }
-    
     // Text drawing
     {
         UIColor *stringColor = self.button.keyTextColor;
@@ -208,10 +183,7 @@
 {
     // Generate the overlay
     UIBezierPath *bezierPath = [self expandedInputViewPath];
-    
-    // Position the overlay
-    CGRect keyRect = [self convertRect:self.button.frame fromView:self.button.superview];
-    
+        
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     // Overlay path & shadow
@@ -250,29 +222,7 @@
         [bezierPath stroke];
         CGContextRestoreGState(context);
     }
-    
-    // Draw the key shadow sliver
-    if (self.button.style == CYRKeyboardButtonStylePhone) {
-        UIColor *color = self.button.keyColor;
         
-        //// Shadow Declarations
-        UIColor *shadow = self.button.keyShadowColor;
-        CGSize shadowOffset = CGSizeMake(0.1, 1.1);
-        CGFloat shadowBlurRadius = 0;
-        
-        //// Rounded Rectangle Drawing
-        UIBezierPath *roundedRectanglePath =
-        [UIBezierPath bezierPathWithRoundedRect:CGRectMake(keyRect.origin.x, keyRect.origin.y, keyRect.size.width, keyRect.size.height - 1) cornerRadius:4];
-        CGContextSaveGState(context);
-        if (self.button.showShadow) {
-            CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
-        }
-        [color setFill];
-        [roundedRectanglePath fill];
-        
-        CGContextRestoreGState(context);
-    }
-    
     [self drawExpandedInputViewOptions];
 }
 
